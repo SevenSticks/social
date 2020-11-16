@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load user_filters %}
+{% block title %}
+{% if edit %}
+Редактировать запись
+{% else %}
+Новая запись
+{% endif %}
+{% endblock %}
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-8 p-5">
+        <div class="card">
+            {% if edit %}
+            <div class="card-header">Редактировать запись.</div>
+            {% else %}
+            <div class="card-header">Добавить новую запись.</div>
+            {% endif %}
+
+            <div class="form-group">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="col-md-8 p-6">
+                        <label for="group">Группа</label>
+                        {{ form.group|addclass:"form-control" }}
+                        <label for="text">Текст</label>
+                        {{ form.text|addclass:"form-control" }}
+
+                    {% if edit %}
+                    <button type="submit" class="btn btn-primary">
+                        Сохранить
+                    </button>
+                    {% else %}
+                    <button type="submit" class="btn btn-primary">
+                        Добавить
+                    </button>
+                    {% endif %}
+                </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+<div class="card-body">
+        <p class="card-text">
+                <a href="/{{ profile.username }}/"><strong class="d-block text-gray-dark">@{{ profile.username }}</strong></a>
+                <p>{{ posts.text|linebreaksbr }}</p>
+                
+                <hr>
+                <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group ">
+                        <a class="btn btn-sm text-muted" href="/{{ profile.username }}/{{ posts.id }}/" role="button">Добавить комментарий</a>
+                        {% if user.username == profile.username %}
+                                <a class="btn btn-sm text-muted" href="/{{ profile.username }}/{{ posts.id }}/edit" role="button">Редактировать</a>
+                        {% endif %}
+                </div>
+                        <small class="text-muted">{{ posts.pub_date|date:"d M Y" }}</small>
+                </div>
+        </div>
+        
+</div>
